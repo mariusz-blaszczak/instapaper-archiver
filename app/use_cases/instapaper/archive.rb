@@ -1,8 +1,16 @@
 module Instapaper
   class Archive
+
+
     def call
+      @archived_count = 0
       login
       archive_all
+      Resonad.Success(message)
+    end
+
+    def message
+      "#{@archived_count} articles just has been archived!"
     end
 
     def login
@@ -20,6 +28,7 @@ module Instapaper
       while is_there_more? do
         archive_first_article_from_the_top
         wait_for_animation_of_deleting
+        @archived_count += 1
       end
     end
 
