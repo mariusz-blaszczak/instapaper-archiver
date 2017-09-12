@@ -6,7 +6,7 @@ module Instapaper
     end
 
     def login
-      login_page = agent.get(@admin_url)
+      login_page = agent.get("https://www.instapaper.com/")
       login_form = login_page.forms.first
       login_field = login_form.field_with(name: "login")
       password_field = login_form.field_with(name: "password")
