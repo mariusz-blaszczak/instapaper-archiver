@@ -8,6 +8,7 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "watir"
+gem "sentry-raven"
 gem "resonad"
 gem "mechanize"
 gem 'rails', '~> 5.1.4'

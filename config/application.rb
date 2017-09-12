@@ -31,3 +31,10 @@ module InstapaperArchiver
 
   end
 end
+
+
+Raven.configure do |config|
+  config.dsn = 'https://91cb497c51734442ab43cd0f27eca137:e98c84e6f9ff401fa4e4e1a5ab37a912@sentry.io/216004'
+  config.excluded_exceptions = []
+  config.environments = %w(production)
+end
