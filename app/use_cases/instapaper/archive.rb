@@ -1,24 +1,25 @@
 module Instapaper
   class Archive
     def call
-      config_agent
+      # config_agent
       login
-      dashboard = agent.get("https://www.instapaper.com/u")
+      dashboard = agent.goto("https://www.instapaper.com/u")
       binding.pry
     end
 
     def login
-      login_page = agent.get("https://www.instapaper.com/")
-      login_form = login_page.forms.first
-      login_field = login_form.field_with(name: "username")
-      password_field = login_form.field_with(name: "password")
-      login_field.value = Rails.application.secrets.fetch(:instapaper_login)
-      password_field.value = Rails.application.secrets.fetch(:instapaper_password)
-      login_form.click_button
+      agent.goto("https://www.instapaper.com/")
+      agent.link(text: "Sign In").click
+      agent.text_field(id: "sign_in_modal_email").set(Rails.application.secrets.fetch(:instapaper_login))
+      agent.text_field(id: "password").set(Rails.application.secrets.fetch(:instapaper_password))
+      agent.button(text: "Sign In").click
+
+      agent.link(class: "js_popover js_settings_popover top_button settings").click
+      agent.link(class: "js_archive_all").click
     end
     
     def agent
-      @agent ||= Mechanize.new
+      @agent ||= Watir::Browser.new
     end
 
     def config_agent
