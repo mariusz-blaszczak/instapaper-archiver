@@ -3,6 +3,7 @@ module Instapaper
     def call
       config_agent
       login
+      dashboard = agent.get("https://www.instapaper.com/u")
       binding.pry
     end
 
