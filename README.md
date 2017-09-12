@@ -12,4 +12,4 @@ EDITOR=vim bin/rails secrets:edit
 ## Deploy to production
 ```
 git push heroku master
-```
+``` 
