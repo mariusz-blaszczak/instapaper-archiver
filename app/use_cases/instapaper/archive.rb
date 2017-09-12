@@ -11,9 +11,9 @@ module Instapaper
       agent.text_field(id: "password").set(Rails.application.secrets.fetch(:instapaper_password))
       agent.button(text: "Sign In").click
 
-      while agent.link(class: "js_archive_single action_link").exists? == true do
-        binding.pry
-        agent.link(class: "js_archive_single action_link").click
+      while agent.link(class: %w(js_archive_single action_link)).exists? do
+        agent.link(class: %w(js_archive_single action_link)).click
+        sleep(2)
       end
     end
     
