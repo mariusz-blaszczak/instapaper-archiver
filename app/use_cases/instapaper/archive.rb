@@ -5,20 +5,24 @@ module Instapaper
     end
 
     def login
-      agent.goto("https://www.instapaper.com/")
-      agent.link(text: "Sign In").click
-      agent.text_field(id: "sign_in_modal_email").set(Rails.application.secrets.fetch(:instapaper_login))
-      agent.text_field(id: "password").set(Rails.application.secrets.fetch(:instapaper_password))
-      agent.button(text: "Sign In").click
+      browser.goto("https://www.instapaper.com/")
+      browser.link(text: "Sign In").click
+      browser.text_field(id: "sign_in_modal_email").set(Rails.application.secrets.fetch(:instapaper_login))
+      browser.text_field(id: "password").set(Rails.application.secrets.fetch(:instapaper_password))
+      browser.button(text: "Sign In").click
 
-      while agent.link(class: %w(js_archive_single action_link)).exists? do
-        agent.link(class: %w(js_archive_single action_link)).click
+      while is_there_more? do
+        browser.link(class: %w(js_archive_single action_link)).click
         sleep(2)
       end
     end
+
+    def is_there_more?
+      browser.link(class: %w(js_archive_single action_link)).exists?
+    end
     
-    def agent
-      @agent ||= Watir::Browser.new
+    def browser
+      @browser ||= Watir::Browser.new
     end
   end
 end
