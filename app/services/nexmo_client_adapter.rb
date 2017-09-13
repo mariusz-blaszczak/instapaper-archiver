@@ -1,4 +1,4 @@
-class SmsClient
+class NexmoClientAdapter
   def self.build
     nexmo_key = Rails.application.secrets.fetch(:nexmo_key)
     nexmo_secret = Rails.application.secrets.fetch(:nexmo_secret)

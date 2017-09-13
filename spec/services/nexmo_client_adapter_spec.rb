@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe SmsClient do
+describe NexmoClientAdapter do
 
   describe "#build" do
     it "instiantiate Nexmo Client with credentials from rails secrets" do
