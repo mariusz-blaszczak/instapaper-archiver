@@ -6,6 +6,10 @@ namespace :instapaper do
       next
     end
     result = Instapaper::Archive.new.call
-    result.on_success { |message| puts message }
+    
+    result.on_success do |message|
+      report_sender = ReportSender.build
+      report_sender.send(message)
+    end
   end
 end

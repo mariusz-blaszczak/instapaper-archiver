@@ -12,7 +12,7 @@ class NexmoClientAdapter
     @client = client
   end
 
-  def send(message:, sender:, receiver:)
+  def send(sender:, receiver:, message:)
     client.send_message(
       from: sender, 
       to: receiver, 

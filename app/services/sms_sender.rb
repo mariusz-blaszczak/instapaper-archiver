@@ -1,15 +1,10 @@
 class SmsSender
-  def self.build
-    client = NexmoClientAdapter.build
-    new(client: client)
-  end
-
   attr_reader :client
 
   SENDER_ID = "InstArchiver".freeze
   RECEIVER_PHONE_NUMBER = "+48887680333".freeze
 
-  def initialize(client:)
+  def initialize(client: NexmoClientAdapter.build)
     @client = client
   end
 
