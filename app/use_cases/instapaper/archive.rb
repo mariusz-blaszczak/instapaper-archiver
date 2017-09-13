@@ -1,7 +1,5 @@
 module Instapaper
   class Archive
-
-
     def call
       @archived_count = 0
       login
