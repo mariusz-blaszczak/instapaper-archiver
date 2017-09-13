@@ -1,4 +1,4 @@
-class SmsSender
+class SmsNotifier
   attr_reader :client, :receiver, :sender
 
   def initialize(client: NexmoClientAdapter.build, sender: Rails.application.config.sms_sender_name, 

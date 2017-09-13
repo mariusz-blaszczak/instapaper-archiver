@@ -7,7 +7,7 @@ namespace :instapaper do
     end
     result = Instapaper::Archive.new.call
     if result.success?
-      sender = SmsSender.new
+      sender = SmsNotifier.new
       sender.send(result.value)
     end
   end

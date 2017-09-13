@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe SmsSender do
+describe SmsNotifier do
   let(:client) { instance_double(NexmoClientAdapter) }
   subject { described_class.new(client: client, sender: "Admin", receiver: "User") }
 

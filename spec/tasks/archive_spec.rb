@@ -4,7 +4,7 @@ describe "rake instapaper:archive", type: :task do
   before do
     result_object = double(Resonad, success?: true, value: "Message returned")
     allow_any_instance_of(Instapaper::Archive).to receive(:call) { result_object }
-    allow_any_instance_of(SmsSender).to receive(:send)
+    allow_any_instance_of(SmsNotifier).to receive(:send)
   end
 
   context "it is saturday" do
@@ -16,8 +16,8 @@ describe "rake instapaper:archive", type: :task do
       task.execute
     end
 
-    it "calls SmsSender send method" do
-      expect_any_instance_of(SmsSender).to receive(:send).with("Message returned")
+    it "calls SmsNotifier send method" do
+      expect_any_instance_of(SmsNotifier).to receive(:send).with("Message returned")
       task.execute
     end
   end
