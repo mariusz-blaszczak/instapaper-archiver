@@ -1,10 +1,8 @@
 class SmsSender
   attr_reader :client, :receiver, :sender
 
-  SENDER_ID = "InstArchiver".freeze
-  RECEIVER_PHONE_NUMBER = "+48887680333".freeze
-
-  def initialize(client: NexmoClientAdapter.build, sender: SENDER_ID, receiver: RECEIVER_PHONE_NUMBER)
+  def initialize(client: NexmoClientAdapter.build, sender: Rails.application.config.sms_sender_name, 
+    receiver: Rails.application.config.sms_receiver_phone_number)
     @client = client
     @sender = sender
     @receiver = receiver
