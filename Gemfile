@@ -10,6 +10,7 @@ ruby "2.4.1"
 gem "watir"
 gem "sentry-raven"
 gem "resonad"
+gem "timecop"
 gem "mechanize"
 gem 'rails', '~> 5.1.4'
 gem "chromedriver-helper"
