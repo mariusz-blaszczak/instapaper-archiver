@@ -1,8 +1,6 @@
 class SmsSender
   def self.build
-    nexmo_key = Rails.application.secrets.fetch(:nexmo_key)
-    nexmo_secret = Rails.application.secrets.fetch(:nexmo_secret)
-    client = Nexmo::Client.new(key: nexmo_key, secret: nexmo_secret)
+    client = NexmoClientAdapter.build
     new(client: client)
   end
 
@@ -15,7 +13,11 @@ class SmsSender
     @client = client
   end
 
-  def send(messege)
-    
+  def send(sender: SENDER_ID, receiver: RECEIVER_PHONE_NUMBER, message:)
+    client.send(
+      sender: sender,
+      receiver: receiver,
+      message: message,
+    )
   end
 end
