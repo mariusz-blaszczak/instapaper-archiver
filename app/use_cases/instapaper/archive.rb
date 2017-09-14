@@ -11,11 +11,16 @@ module Instapaper
 
     def call
       return unless valid_date?
-      archiver.subscribe(report_generator)
       result = archiver.archive_all_articles
       result.on_success do |message|
         notifier.send(report_generator.message)
       end
+    end
+
+    private 
+
+    def config_subscribers
+      archiver.subscribe(report_generator)
     end
 
     def valid_date?
