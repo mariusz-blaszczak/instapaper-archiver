@@ -1,6 +1,6 @@
 class ReportGenerator
 
-  attr_reader :archived_count
+  attr_accessor :archived_count
 
   def initialize
     @archived_count = 0
