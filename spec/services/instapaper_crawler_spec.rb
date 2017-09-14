@@ -7,7 +7,7 @@ describe InstapaperCrawler do
     InstapaperTestSupport::ArticleAdder.new.call("https://roweroweporady.pl/skoda-ebike-test-roweru-elektrycznego/")
     articles_count = InstapaperTestSupport::ArticleCounter.new.call
     expect(articles_count).to eq(2)
-    subject.call
+    subject.archive_all_articles
     articles_count_after_archive = InstapaperTestSupport::ArticleCounter.new.call
     expect(articles_count_after_archive).to eq(0)
   end
