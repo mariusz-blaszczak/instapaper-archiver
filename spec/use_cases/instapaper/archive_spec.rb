@@ -44,5 +44,10 @@ describe Instapaper::Archive do
       expect(archiver).to_not receive(:archive_all_articles)
       subject
     end
+
+    it "does not call send on notifier" do
+      expect(notifier).to_not receive(:send)
+      subject
+    end
   end
 end
