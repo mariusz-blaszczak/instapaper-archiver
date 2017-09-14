@@ -35,7 +35,15 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+  config.mock_with :rspec do |mocks|
 
+      # This option should be set when all dependencies are being loaded
+      # before a spec run, as is the case in a typical spec helper. It will
+      # cause any verifying double instantiation for a class that does not
+      # exist to raise, protecting against incorrectly spelt names.
+      mocks.verify_doubled_constant_names = true
+
+    end
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
