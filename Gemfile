@@ -15,6 +15,7 @@ gem "mechanize"
 gem 'rails', '~> 5.1.4'
 gem "chromedriver-helper"
 gem "nexmo"
+gem 'wisper', '2.0.0'
 # Use postgresql as the database for Active Record
 # gem 'pg', '~> 0.18'
 # Use Puma as the app server
