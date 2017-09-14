@@ -13,12 +13,16 @@ describe Instapaper::Archive do
     after { Timecop.return }
 
     let(:archiver) do
-      archiver = instance_double(InstapaperCrawler)
-      allow(archiver).to receive(:archive_all_articles) { Resonad::Success("A sample message") }
+      archiver = instance_double(InstapaperCrawler).as_null_object
+      allow(archiver).to receive(:archive_all_articles) { Resonad::Success("Fix me later") }
       archiver
     end
 
-    subject { described_class.new(notifier: notifier, archiver: archiver).call }
+    let(:report_generator) do 
+      instance_double(ReportGenerator, message: "A sample message")
+    end
+
+    subject { described_class.new(notifier: notifier, archiver: archiver, report_generator: report_generator).call }
 
     it "calls send on notifier" do
       expect(notifier).to receive(:send).with("A sample message")

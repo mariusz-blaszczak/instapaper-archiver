@@ -1,24 +1,16 @@
 class InstapaperCrawler
   include Browser
+  include Wisper::Publisher
 
-  attr_reader :report_generator
-  
-  def initialize(report_generator: ReportGenerator.new)
-    @report_generator = report_generator
-  end
 
   def archive_all_articles
     @archived_count = 0
     login
     archive_all
-    Resonad.Success(message)
+    Resonad.Success("fix me later")
   end
 
   private
-
-  def message
-    "#{@archived_count} articles just has been archived!"
-  end
 
   def login
     username = Rails.application.secrets.fetch(:instapaper_login)
@@ -34,8 +26,8 @@ class InstapaperCrawler
   def archive_all
     while is_there_more? do
       archive_first_article_from_the_top
+      broadcast(:archive_single_article)
       wait_for_animation_of_deleting
-      @archived_count += 1
     end
   end
 
