@@ -23,10 +23,3 @@ module InstapaperTestSupport
     end
   end
 end
-
-
-describe InstapaperTestSupport::ArticleAdder do
-  it "add url to instapaper account" do
-    described_class.new.call("https://github.com/stve/instapaper")
-  end
-end

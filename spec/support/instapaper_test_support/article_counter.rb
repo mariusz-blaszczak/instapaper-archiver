@@ -4,7 +4,6 @@ module InstapaperTestSupport
       puts "Loggin in to Instapaper dashboard..."
       login
       puts "Logged in to Instapaper dashboard..."
-      binding.pry
       count_articles
     end
 
@@ -60,12 +59,5 @@ module InstapaperTestSupport
       # make the browser
       Watir::Browser.new :chrome, options: options
     end
-  end
-end
-
-
-describe InstapaperTestSupport::ArticleCounter do
-  it "count articles number" do
-    described_class.new.call
   end
 end
