@@ -96,6 +96,7 @@ GEM
     multipart-post (2.0.0)
     net-http-digest_auth (1.4.1)
     net-http-persistent (2.9.4)
+    netrc (0.11.0)
     nexmo (4.7.0)
       jwt
     nio4r (2.1.0)
@@ -143,6 +144,10 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     resonad (1.2.0)
+    rest-client (2.0.2)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     rspec-core (3.6.0)
       rspec-support (~> 3.6.0)
     rspec-expectations (3.6.0)
@@ -234,6 +239,7 @@ DEPENDENCIES
   puma (~> 3.7)
   rails (~> 5.1.4)
   resonad
+  rest-client
   rspec-rails (~> 3.6)
   sass-rails (~> 5.0)
   sentry-raven
