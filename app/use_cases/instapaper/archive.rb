@@ -8,11 +8,15 @@ module Instapaper
     end
 
     def call
-      return unless Time.now.saturday?
+      return unless valid_date?
       result = archiver.archive_all_articles
       result.on_success do |message|
         notifier.send(message)
       end
+    end
+
+    def valid_date?
+      Time.now.saturday?
     end
   end
 end
