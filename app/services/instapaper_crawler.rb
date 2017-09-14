@@ -1,6 +1,12 @@
 class InstapaperCrawler
   include Browser
 
+  attr_reader :report_generator
+  
+  def initialize(report_generator: ReportGenerator.new)
+    @report_generator = report_generator
+  end
+
   def archive_all_articles
     @archived_count = 0
     login
