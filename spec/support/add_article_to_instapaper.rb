@@ -1,9 +1,10 @@
 module InstapaperTestSupport
   class ArticleAdder
-    def initialize
-    end
 
-    def call
+    attr_reader :url
+
+    def call(url)
+      @url = url
       api_url = "https://www.instapaper.com/api/add"
       RestClient.post(api_url, request_params)
     end
@@ -12,7 +13,7 @@ module InstapaperTestSupport
       {
         username: Rails.application.secrets.fetch(:instapaper_login),
         password: Rails.application.secrets.fetch(:instapaper_password),
-        url: "https://robots.thoughtbot.com/deadlines"
+        url: url || "https://robots.thoughtbot.com/deadlines"
       }
     end
   end
@@ -26,6 +27,6 @@ end
 
 describe InstapaperTestSupport::ArticleAdder do
   it "add url to instapaper account" do
-    described_class.new.call
+    described_class.new.call("https://github.com/stve/instapaper")
   end
 end

@@ -4,6 +4,7 @@ module InstapaperTestSupport
       puts "Loggin in to Instapaper dashboard..."
       login
       puts "Logged in to Instapaper dashboard..."
+      binding.pry
       count_articles
     end
 
